@@ -78,12 +78,12 @@ app.use((req, res, next) => {
   }
 
   // Only start listening locally. On Vercel, just export the app.
-  // if (!process.env.VERCEL) {
-  //   const port = parseInt(process.env.PORT || "5000", 10);
-  //   httpServer.listen(port, "0.0.0.0", () => {
-  //     log(`serving locally on port ${port}`);
-  //   });
-  // }
+  if (!process.env.VERCEL) {
+    const port = parseInt(process.env.PORT || "8080", 10);
+    httpServer.listen(port, "0.0.0.0", () => {
+      log(`serving locally on port ${port}`);
+    });
+  }
 })();
 
 // Export app for Vercel serverless function
