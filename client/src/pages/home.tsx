@@ -195,7 +195,7 @@ export default function Home() {
         >
           ببركة السيدة فاطمة و أولادها المعصومين (ع)
         </motion.h1>
-        <DecorativeDivider />
+        {/* <DecorativeDivider /> */}
 
         {!isEventStarted ? (
           <motion.div
