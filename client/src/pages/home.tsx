@@ -29,16 +29,16 @@ function calculateTimeLeft(): TimeLeft {
 function CountdownUnit({ value, label, isPulsing = false }: { value: number; label: string; isPulsing?: boolean }) {
   return (
     <div className="flex flex-col items-center" data-testid={`countdown-${label.toLowerCase()}`}>
-      <motion.div 
+      <motion.div
         className="relative bg-card border-2 border-primary/30 rounded-md w-[72px] h-[80px] sm:w-24 sm:h-28 md:w-32 md:h-36 lg:w-36 lg:h-40 flex items-center justify-center overflow-hidden"
-        animate={isPulsing ? { 
+        animate={isPulsing ? {
           boxShadow: [
             "0 0 0 0 hsl(var(--primary) / 0)",
             "0 0 0 4px hsl(var(--primary) / 0.15)",
             "0 0 0 0 hsl(var(--primary) / 0)"
           ]
         } : {}}
-        transition={isPulsing ? { 
+        transition={isPulsing ? {
           duration: 1,
           repeat: Infinity,
           ease: "easeInOut"
@@ -58,7 +58,7 @@ function CountdownUnit({ value, label, isPulsing = false }: { value: number; lab
           </motion.span>
         </AnimatePresence>
       </motion.div>
-      <span 
+      <span
         className="mt-1.5 sm:mt-2 text-[11px] sm:text-sm md:text-base text-muted-foreground"
         style={{ fontFamily: "'Amiri', 'Cairo', 'Tajawal', serif" }}
         dir="rtl"
@@ -153,7 +153,7 @@ export default function Home() {
     const timer = setInterval(() => {
       const newTimeLeft = calculateTimeLeft();
       setTimeLeft(newTimeLeft);
-      
+
       if (newTimeLeft.days === 0 && newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
         setIsEventStarted(true);
       }
@@ -165,7 +165,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {isEventStarted && <Confetti />}
-      
+
       <FloralCorner position="top-left" />
       <FloralCorner position="top-right" />
       <FloralCorner position="bottom-left" />
@@ -195,24 +195,6 @@ export default function Home() {
         >
           ببركة السيدة فاطمة و أولادها المعصومين (ع)
         </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
-        >
-          <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-primary/20 rounded-lg blur-sm" />
-            <img
-              src={invitationCard}
-              alt="Engagement Invitation"
-              className="relative w-full h-auto rounded-md shadow-xl"
-              data-testid="img-invitation-card"
-            />
-          </div>
-        </motion.div>
-
         <DecorativeDivider />
 
         {!isEventStarted ? (
@@ -222,15 +204,15 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="text-center"
           >
-            <h2 
-              className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4 sm:mb-6" 
+            <h2
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-4 sm:mb-6"
               style={{ fontFamily: "'Amiri', 'Cairo', 'Tajawal', serif" }}
               dir="rtl"
               data-testid="text-countdown-heading"
             >
               عقد القران بعد
             </h2>
-            
+
             <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8" data-testid="countdown-timer">
               <CountdownUnit value={timeLeft.days} label="أيام" />
               <CountdownUnit value={timeLeft.hours} label="ساعات" />
@@ -257,15 +239,15 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center"
           >
-            <h2 
-              className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4" 
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl text-foreground mb-4"
               style={{ fontFamily: "'Amiri', 'Cairo', 'Tajawal', serif" }}
               dir="rtl"
               data-testid="text-celebration-heading"
             >
-              لقد بدأ الاحتفال!
+              لقد عقد القران شكرا لحضوركم
             </h2>
-            <p 
+            <p
               className="text-lg sm:text-xl text-muted-foreground"
               style={{ fontFamily: "'Amiri', 'Cairo', 'Tajawal', serif" }}
               dir="rtl"
@@ -289,6 +271,26 @@ export default function Home() {
         >
           نتطلع للاحتفال معكم
         </motion.p>
+
+        <DecorativeDivider />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+        >
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 via-transparent to-primary/20 rounded-lg blur-sm" />
+            <img
+              src={invitationCard}
+              alt="Engagement Invitation"
+              className="relative w-full h-auto rounded-md shadow-xl"
+              data-testid="img-invitation-card"
+            />
+          </div>
+        </motion.div>
+
       </main>
     </div>
   );
